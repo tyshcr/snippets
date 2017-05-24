@@ -8,14 +8,18 @@
 
 import Foundation
 
-class snippets {
+class snippets: menuDelegate {
+    
+    var options = [1: "callback"]
     
     init() {
         menu()
     }
     
     func menu() {
-        print("[1] callback")
+        for (key, value) in options.sorted(by: { $0.0 < $1.0 }) {
+            print("[\(key)] \(value)")
+        }
 
         let functionId = readLine()!
 
@@ -34,6 +38,7 @@ class snippets {
             print("Received callback with value: \(success)")
         }
     }
+    
 }
 
 let _ = snippets()
