@@ -2,7 +2,7 @@
 //  menu.swift
 //  snippets
 //
-//  Created by TYSH, CHRISTOPHER R [AG-Contractor/1000] on 5/4/17.
+//  Created by TYSH, CHRISTOPHER
 //
 //
 
