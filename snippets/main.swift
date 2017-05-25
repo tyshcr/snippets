@@ -10,7 +10,7 @@ import Foundation
 
 class snippets: menuDelegate {
     
-    var options = [1: "callback", 2: "map", 3: "exit"]
+    var options = [1: "callback", 2: "map", 3: "filter", 4: "exit"]
     
     init() {
         menu()
@@ -37,6 +37,9 @@ class snippets: menuDelegate {
                     map()
                 
                 case "3":
+                    filter()
+                
+                case "4":
                     exit = true
                 
                 default:
@@ -54,6 +57,10 @@ class snippets: menuDelegate {
     
     func map() {
         print( functionWithMap() )
+    }
+    
+    func filter() {
+        print( functionWithFilter() )
     }
     
 }

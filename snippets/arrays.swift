@@ -28,6 +28,13 @@ func functionWithMap() -> [String] {
     let names = collection().map {
         return $0.name
     }
-    
     return names
+}
+
+func functionWithFilter() -> [player] {
+    let filtered = collection().filter {
+        (player) -> Bool in
+            player.position == "F"
+    }
+    return filtered
 }
