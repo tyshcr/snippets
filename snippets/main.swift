@@ -10,7 +10,7 @@ import Foundation
 
 class snippets: menuDelegate {
     
-    var options = [1: "callback", 2: "map", 3: "filter", 4: "exit"]
+    var options = [1: "callback", 2: "map", 3: "filter", 4: "flatMap", 5: "exit"]
     
     init() {
         menu()
@@ -40,6 +40,9 @@ class snippets: menuDelegate {
                     filter()
                 
                 case "4":
+                    flatMap()
+                    
+                case "5":
                     exit = true
                 
                 default:
@@ -61,6 +64,10 @@ class snippets: menuDelegate {
     
     func filter() {
         print( functionWithFilter() )
+    }
+    
+    func flatMap() {
+        print( functionWithFlatMap() )
     }
     
 }
