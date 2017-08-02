@@ -10,7 +10,7 @@ import Foundation
 
 class snippets: menuDelegate {
     
-    var options = [1: "callback", 2: "map", 3: "filter", 4: "flatMap", 5: "exit"]
+    var options = [1: "callback", 2: "map", 3: "filter", 4: "flatMap", 5: "enumerate", 6: "exit"]
     
     init() {
         menu()
@@ -43,6 +43,9 @@ class snippets: menuDelegate {
                     flatMap()
                     
                 case "5":
+                    enumerate()
+                
+                case "6":
                     exit = true
                 
                 default:
@@ -68,6 +71,10 @@ class snippets: menuDelegate {
     
     func flatMap() {
         print( functionWithFlatMap() )
+    }
+    
+    func enumerate() {
+        print( functionWithEnumeration() )
     }
     
 }

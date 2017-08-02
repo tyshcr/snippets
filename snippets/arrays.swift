@@ -25,6 +25,7 @@ func collection() -> [player] {
     return collection
 }
 
+// Use map to loop over a collection and apply the same operation to each element in the collection.
 func functionWithMap() -> [String] {
     let names = collection().map {
         return $0.name
@@ -32,6 +33,7 @@ func functionWithMap() -> [String] {
     return names
 }
 
+// Use filter to loop over a collection and return an Array containing only those elements that match an include condition.
 func functionWithFilter() -> [player] {
     let filtered = collection().filter {
         (player) -> Bool in
@@ -40,27 +42,40 @@ func functionWithFilter() -> [player] {
     return filtered
 }
 
-func functionWithFlatMap() -> [Int?] {
+// Use flatmap to combine Arrays into a single Array. 
+// Also removes nil values, but only resolves 1 level of optionals (combine ararys OR remove nils)
+func functionWithFlatMap() -> [Int] {
     let players = collection().filter {
         (player) -> Bool in
-        player.position == "C"
-    }.map { (player) -> Int in
-        if let number = player.number {
-            return number as Int
-        }
+            player.position == "C"
+    }.map {
+        (player) -> Int in
+            return player.number!
     }
     
     let coaches = collection().filter {
         (player) -> Bool in
-        player.position == "COACH"
-    }.map { (player) -> Int in
-        if let number = player.number {
-            return number as Int
-        }
+            player.position == "COACH"
+    }.map {
+        (player) -> Int? in
+            if let num = player.number {
+                return num
+            }
+            return nil
     }
     
-    let everyone = [players, coaches]
-    let flattened = everyone.map{ $0 }.flatMap { $0 }
-    
+    let everyone = [players, coaches] // [[0,13],[nil]]
+    // use flatMap twice. Once to combine the Arrays. Twice to remove the nils.
+    let flattened = everyone.flatMap{ $0 }.flatMap{ $0 }
     return flattened
+}
+
+func functionWithEnumeration() -> [(fruit: String, position: Int)] {
+    let fruits = ["Apple", "Orange", "Grape"]
+    var output: [(fruit: String, position: Int)] = []
+    
+    for (index, item) in fruits.enumerated() {
+        output.append((fruit: item, position: index))
+    }
+    return output
 }
